@@ -1,0 +1,182 @@
+app: foster-cat
+service:
+  name: foster-cat-service
+
+# package:
+#   individually: true
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+  documentation:
+    api:
+      info:
+        version: v1.0.0
+        title: Cat Pool API
+        description: Serverless Application for Adopting and Fostering Cats
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - serverless-iam-roles-per-function
+  - serverless-aws-documentation
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    CAT_TABLE: Cat-${self:provider.stage}
+    CAT_TABLE_ARN: "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.CAT_TABLE}"
+    CAT_TABLE_INDEXES_ARN: "arn:aws:dynamodb:us-east-1:*:table/${self:provider.environment.CAT_TABLE}/index/*"
+    CAT_PICTURE_S3_BUCKET: cat-pool-picture-upload-bucket-${self:provider.stage}
+    SIGNED_URL_EXPIRATION: 300
+    CAT_OWNER_INDEX_NAME: cat-owner-index
+
+functions:
+  GetPhotoUploadUrl:
+    handler: src/lambda/http/getPhotoUploadUrl.handler
+    events:
+      - http:
+          method: get
+          path: cats/fostered/{catId}/uploadUrl
+          cors: true
+
+  DeleteCat:
+    handler: src/lambda/http/deleteCat.handler
+    events:
+      - http:
+          method: delete
+          path: cats/fostered/{catId}
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:DeleteItem
+        Resource: ${self:provider.environment.CAT_TABLE_ARN}
+
+  GetUserCats:
+    handler: src/lambda/http/getUserCats.handler
+    events:
+      - http:
+          method: get
+          path: cats/fostered
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:Query
+        Resource: ${self:provider.environment.CAT_TABLE_ARN}
+      - Effect: Allow
+        Action: dynamodb:Query
+        Resource: ${self:provider.environment.CAT_TABLE_INDEXES_ARN}
+
+  CreateCat:
+    handler: src/lambda/http/createCat.handler
+    events:
+      - http:
+          method: post
+          path: cats
+          cors: true
+          documentation:
+            summary: Create Cat
+            description: Create a new cat foster
+          request:
+            schema:
+              application/json: ${file(src/models/CreateCatRequest.json)}
+
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:PutItem
+        Resource: ${self:provider.environment.CAT_TABLE_ARN}
+
+  UpdateCat:
+    handler: src/lambda/http/updateCat.handler
+    events:
+      - http:
+          method: put
+          path: cats/fostered/{catId}
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:UpdateItem
+        Resource: ${self:provider.environment.CAT_TABLE_ARN}
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: ApiGatewayRestApi
+
+    CatDynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: catId
+            AttributeType: S
+          - AttributeName: ownerId
+            AttributeType: S
+          - AttributeName: createdAt
+            AttributeType: S
+        KeySchema:
+          - AttributeName: catId
+            KeyType: HASH
+          - AttributeName: ownerId
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.CAT_TABLE}
+        GlobalSecondaryIndexes:
+          - IndexName: ${self:provider.environment.CAT_OWNER_INDEX_NAME}
+            KeySchema:
+              - AttributeName: ownerId
+                KeyType: HASH
+              - AttributeName: createdAt
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL # What attributes will be copied to an index
+
+    UploadBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.environment.CAT_PICTURE_S3_BUCKET}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - "*"
+              AllowedHeaders:
+                - "*"
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
+
+    BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        PolicyDocument:
+          Id: MyPolicy
+          Version: "2012-10-17"
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Allow
+              Principal: "*"
+              Action: ["s3:GetObject", "s3:Put*"]
+              Resource: "arn:aws:s3:::${self:provider.environment.CAT_PICTURE_S3_BUCKET}/*"
+        Bucket: !Ref UploadBucket

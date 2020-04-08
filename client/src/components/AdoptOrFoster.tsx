@@ -1,0 +1,42 @@
+import { faPaw, faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { Card, CardBody, CardText, CardTitle, Col, Row } from "reactstrap";
+
+const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
+  return (
+    <Row>
+      <Col>
+        <Card
+        // onClick={() => history.push("/adopt")}
+        >
+          <CardBody>
+            <FontAwesomeIcon icon={faHome} size={"10x"} />
+          </CardBody>
+          <CardBody>
+            <CardTitle>
+              <h1>Adopt</h1>
+            </CardTitle>
+            <CardText>Adopt a cat and increase your family</CardText>
+          </CardBody>
+        </Card>
+      </Col>
+      <Col>
+        <Card onClick={(): void => history.push("/foster")}>
+          <CardBody>
+            <FontAwesomeIcon icon={faPaw} size={"10x"} />
+          </CardBody>
+          <CardBody>
+            <CardTitle>
+              <h1>Foster</h1>
+            </CardTitle>
+            <CardText>Foster your cat and spread love</CardText>
+          </CardBody>
+        </Card>
+      </Col>
+    </Row>
+  );
+};
+
+export default withRouter(AdoptOrFoster);

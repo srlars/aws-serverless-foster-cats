@@ -1,0 +1,25 @@
+
+.lead {
+  font-style: italic;
+}
+
+label {
+  padding-bottom: 48px;
+  font-weight: bolder;
+}
+
+.loginDetails {
+ float: right;
+}
+
+.logoutButton  {
+  margin-left: 12px;
+}
+
+.editIcon {
+  margin-left: 12px;
+}
+
+h3 {
+  padding-bottom: 24px;
+}

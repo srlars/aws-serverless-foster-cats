@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CatRequest",
+  "type": "object",
+  "properties": {
+    "catId": {
+      "type": "string",
+      "description": "UUID for Cat Foster"
+    },
+    "ownerId": {
+      "type": "string",
+      "description": "UUID for authenticated owner"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Date cat loan was created (JSON format)"
+    },
+    "race": {
+      "type": "string",
+      "description": "Race of cat (e.g. British Shorthair)"
+    },
+    "gender": {
+      "type": "string",
+      "description": "Gender of cat (e.g. male)"
+    },
+    "age": {
+      "type": "string",
+      "description": "Age of cat in years (e.g. 1)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of cat (e.g. Missy)"
+    },
+    "pictureUrl": {
+      "type": "string",
+      "description": "Signed URL for accessing picture of cat"
+    }
+  },
+  "required": ["race", "gender", "age", "name"],
+  "additionalProperties": false
+}
