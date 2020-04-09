@@ -78,6 +78,21 @@ functions:
         Action: dynamodb:Query
         Resource: ${self:provider.environment.CAT_TABLE_INDEXES_ARN}
 
+  GetAllCats:
+    handler: src/lambda/http/getAllCats.handler
+    events:
+      - http:
+          method: get
+          path: cats/fostered
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action: dynamodb:Query
+        Resource: ${self:provider.environment.CAT_TABLE_ARN}
+      - Effect: Allow
+        Action: dynamodb:Query
+        Resource: ${self:provider.environment.CAT_TABLE_INDEXES_ARN}
+
   CreateCat:
     handler: src/lambda/http/createCat.handler
     events:
