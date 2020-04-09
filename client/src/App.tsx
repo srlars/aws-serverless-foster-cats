@@ -9,8 +9,10 @@ import "./App.css";
  */
 import awsconfig from "./aws-exports";
 import Foster from "./components/Foster";
+import Adopt from "./components/Adopt";
 import AdoptOrFoster from "./components/AdoptOrFoster";
 import NavBar from "./components/NavBar";
+import Home from "./components/Home";
 import { useAuth0 } from "./auth/react-auth0-spa";
 
 Amplify.configure(awsconfig);
@@ -36,13 +38,18 @@ const App: React.FC = () => {
         <Row>
           <Col>
             <Jumbotron>
+              <Row className="float-left">
+                <Home />
+              </Row>
               <Row className="float-right">
                 <NavBar user={user} />
               </Row>
               <Row>
                 <Col>
-                  <h1 className="display-3">Foster Cats</h1>
-                  <h3 className="lead">Gift a furry friend a home</h3>
+                  <h1 className="display-3 center padding">Foster Your Cat</h1>
+                  <h3 className="lead center">
+                    and gift a furry friend a new home
+                  </h3>
                 </Col>
               </Row>
             </Jumbotron>
@@ -51,10 +58,7 @@ const App: React.FC = () => {
 
         <Switch>
           <Route path="/" exact render={(): JSX.Element => <AdoptOrFoster />} />
-          {/* <Route
-            path="/adopt"
-            render={(): JSX.Element => <Adopt jwt={jwt} />}
-          /> */}
+          <Route path="/adopt" render={(): JSX.Element => <Adopt />} />
           <Route
             path="/foster"
             render={(): JSX.Element => <Foster jwt={jwt} />}

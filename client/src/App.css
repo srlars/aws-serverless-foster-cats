@@ -1,6 +1,9 @@
+.padding {
+  padding: 1rem;
+}
 
-.lead {
-  font-style: italic;
+.center {
+  text-align: center;
 }
 
 label {
@@ -9,10 +12,10 @@ label {
 }
 
 .loginDetails {
- float: right;
+  float: right;
 }
 
-.logoutButton  {
+.logoutButton {
   margin-left: 12px;
 }
 

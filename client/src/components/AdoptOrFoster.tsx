@@ -8,9 +8,7 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
   return (
     <Row>
       <Col>
-        <Card
-        // onClick={() => history.push("/adopt")}
-        >
+        <Card onClick={() => history.push("/adopt")} className="padding center">
           <CardBody>
             <FontAwesomeIcon icon={faHome} size={"10x"} />
           </CardBody>
@@ -23,7 +21,9 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
         </Card>
       </Col>
       <Col>
-        <Card onClick={(): void => history.push("/foster")}>
+        <Card
+          onClick={(): void => history.push("/foster")}
+          className="padding center">
           <CardBody>
             <FontAwesomeIcon icon={faPaw} size={"10x"} />
           </CardBody>

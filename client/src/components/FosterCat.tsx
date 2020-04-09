@@ -14,7 +14,7 @@ interface Props {
 const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
   // State of the Foster button:  Disabled <-> Idle -> Fostering -> Success|Failed
   enum FosterAction {
-    Disabled = "Enter all fields",
+    Disabled = "Foster!",
     Idle = "Foster it!",
     Fostering = "Fostering... ",
     Failed = "Failed 🆇",
@@ -87,7 +87,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
         }
       } else {
         log.info(
-          "Can't foster cat : Either jwt or race, gender, age or name are not available"
+          "Can't foster cat: either jwt, race, gender, age or name are not available."
         );
       }
     }
@@ -97,62 +97,71 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
     <>
       <Row>
         <Col>
-          <h3>Foster a cat</h3>
+          <h3>Foster your cat</h3>
         </Col>
       </Row>
 
       <Row>
         <Col sm={1}>
-          <Label for="race">Race</Label>
+          <Label for="race" class="align-middle">
+            Race
+          </Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="race"
-            placeholder="e.g. British Shorthair"
+            placeholder="Persian"
             value={catRace}
             onChange={(e): void => setCatRace(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="gender">Gender</Label>
+          <Label for="gender" class="align-middle">
+            Gender
+          </Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="gender"
-            placeholder="e.g. Male"
+            placeholder="Female"
             value={catGender}
             onChange={(e): void => setCatGender(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="age">Age</Label>
+          <Label for="age" class="align-middle">
+            Age
+          </Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="age"
-            placeholder="e.g. 1"
+            placeholder="1 year"
             value={catAge}
             onChange={(e): void => setCatAge(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="name">Name</Label>
+          <Label for="name" class="align-middle">
+            Name
+          </Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="name"
-            placeholder="e.g. Missy"
+            placeholder="Missy"
             value={catName}
             onChange={(e): void => setCatName(e.target.value)}
           />
         </Col>
         <Col>
           <Button
-            color={"primary"}
+            outline
+            color={"secondary"}
             onClick={fosterCat}
             disabled={!catRace || !catGender || !catAge || !catName}>
             {fosterStatus}{" "}
