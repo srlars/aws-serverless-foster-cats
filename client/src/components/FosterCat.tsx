@@ -97,7 +97,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
     <>
       <Row>
         <Col>
-          <h3>Foster your cat</h3>
+          <h3>Foster Your Cat</h3>
         </Col>
       </Row>
 

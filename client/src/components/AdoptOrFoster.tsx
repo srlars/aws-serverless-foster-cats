@@ -16,7 +16,7 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
             <CardTitle>
               <h1>Adopt</h1>
             </CardTitle>
-            <CardText>Adopt a cat and grow your family</CardText>
+            <CardText>a cat and grow your family</CardText>
           </CardBody>
         </Card>
       </Col>
@@ -31,7 +31,7 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
             <CardTitle>
               <h1>Foster</h1>
             </CardTitle>
-            <CardText>Foster your cat and spread love</CardText>
+            <CardText>your cat and spread love</CardText>
           </CardBody>
         </Card>
       </Col>

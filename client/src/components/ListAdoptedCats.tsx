@@ -87,7 +87,7 @@ const ListFosteredCats: React.FC<Props> = ({
 
       <Row>
         <Col>
-          <h3>Cats searching for a new family</h3>
+          <h3>Cats Searching A New Family</h3>
         </Col>
       </Row>
 
