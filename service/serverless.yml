@@ -87,10 +87,10 @@ functions:
           cors: true
     iamRoleStatements:
       - Effect: Allow
-        Action: dynamodb:Query
+        Action: dynamodb:Scan
         Resource: ${self:provider.environment.CAT_TABLE_ARN}
       - Effect: Allow
-        Action: dynamodb:Query
+        Action: dynamodb:Scan
         Resource: ${self:provider.environment.CAT_TABLE_INDEXES_ARN}
 
   CreateCat:

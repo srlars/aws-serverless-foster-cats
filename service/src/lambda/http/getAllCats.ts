@@ -1,4 +1,8 @@
-import { APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
+import {
+  APIGatewayProxyHandler,
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult,
+} from "aws-lambda";
 import { DynamoDB } from "aws-sdk";
 import "source-map-support/register";
 import { createLogger } from "../../utils/logger";
@@ -7,26 +11,23 @@ const logger = createLogger("http");
 const docClient = new DynamoDB.DocumentClient();
 
 const CAT_TABLE = process.env.CAT_TABLE;
-const CAT_OWNER_INDEX_NAME = process.env.CAT_OWNER_INDEX_NAME;
 
 /**
  * Get all cats (that have been fostered)
  * @param event
  */
 export const handler: APIGatewayProxyHandler = async (
-  event
+  event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  logger.info("Received request to get all cats");
+  logger.info("Getting all cats", event);
 
   try {
-    // Use an INDEX for improved performance
     const params = {
       TableName: CAT_TABLE,
-      IndexName: CAT_OWNER_INDEX_NAME,
     };
 
-    logger.info("Querying all cats");
-    const result = await docClient.query(params).promise();
+    logger.info("Scan all cats");
+    const result = await docClient.scan(params).promise();
 
     return {
       statusCode: 200,
