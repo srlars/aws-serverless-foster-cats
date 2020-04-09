@@ -1,4 +1,4 @@
-import { faCat } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useEffect, useCallback } from "react";
@@ -71,7 +71,7 @@ const ListFosteredCats: React.FC<Props> = ({
           <img src={imageUrl} height={150} alt="" />
         </td>
         <td>
-          <FontAwesomeIcon icon={faCat} size="lg" />
+          <FontAwesomeIcon icon={faHome} size="lg" />
         </td>
       </tr>
     );
@@ -87,7 +87,7 @@ const ListFosteredCats: React.FC<Props> = ({
 
       <Row>
         <Col>
-          <h3>Cats up for adoption</h3>
+          <h3>Cats searching for a new family</h3>
         </Col>
       </Row>
 
