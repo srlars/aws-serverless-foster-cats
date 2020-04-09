@@ -2,38 +2,15 @@
  * Set up Home redirect
  */
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
-  state = {
-    redirect: false,
-  };
-  setRedirect = () => {
-    if (this.state.redirect === false) {
-      this.setState({
-        redirect: true,
-      });
-    }
-    if (this.state.redirect === true) {
-      this.setState({
-        redirect: false,
-      });
-    }
-  };
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to="/" />;
-    }
-  };
-
   render() {
     return (
       <div>
-        {this.renderRedirect()}
-        <Button action="/" outline color="secondary" onClick={this.setRedirect}>
+        <Link to="/" className="btn btn-outline-secondary">
           Home
-        </Button>
+        </Link>
       </div>
     );
   }
