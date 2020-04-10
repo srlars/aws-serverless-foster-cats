@@ -14,7 +14,7 @@ interface Props {
 const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
   // State of the Foster button:  Disabled <-> Idle -> Fostering -> Success|Failed
   enum FosterAction {
-    Disabled = "Enter all fields",
+    Disabled = "Foster!",
     Idle = "Foster it!",
     Fostering = "Fostering... ",
     Failed = "Failed 🆇",
@@ -87,7 +87,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
         }
       } else {
         log.info(
-          "Can't foster cat : Either jwt or race, gender, age or name are not available"
+          "Can't foster cat: either jwt, race, gender, age or name are not available."
         );
       }
     }
@@ -97,7 +97,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
     <>
       <Row>
         <Col>
-          <h3>Foster a cat</h3>
+          <h3>Foster Your Cat</h3>
         </Col>
       </Row>
 
@@ -109,7 +109,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
           <Input
             type="text"
             id="race"
-            placeholder="e.g. British Shorthair"
+            placeholder="e.g. Persian"
             value={catRace}
             onChange={(e): void => setCatRace(e.target.value)}
           />
@@ -121,7 +121,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
           <Input
             type="text"
             id="gender"
-            placeholder="e.g. Male"
+            placeholder="e.g. Female"
             value={catGender}
             onChange={(e): void => setCatGender(e.target.value)}
           />
@@ -133,7 +133,7 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
           <Input
             type="text"
             id="age"
-            placeholder="e.g. 1"
+            placeholder="e.g. 1 year"
             value={catAge}
             onChange={(e): void => setCatAge(e.target.value)}
           />
@@ -152,7 +152,8 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
         </Col>
         <Col>
           <Button
-            color={"primary"}
+            outline
+            color={"secondary"}
             onClick={fosterCat}
             disabled={!catRace || !catGender || !catAge || !catName}>
             {fosterStatus}{" "}

@@ -1,15 +1,21 @@
-import React from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import React, { useState } from "react";
 import { Col, Row } from "reactstrap";
+import { Cat } from "../types/Cat";
+import ListAdoptedCats from "./ListAdoptedCats";
 
-const Adopt: React.FC<RouteComponentProps> = ({ history }) => {
+const Adopt: React.FC = () => {
+  const [fosteredCats, setFosteredCats] = useState<Cat[]>([]);
+
   return (
     <Row>
       <Col>
-        <h1>Adopt</h1>
+        <ListAdoptedCats
+          fosteredCats={fosteredCats}
+          setFosteredCats={setFosteredCats}
+        />
       </Col>
     </Row>
   );
 };
 
-export default withRouter(Adopt);
+export default Adopt;
