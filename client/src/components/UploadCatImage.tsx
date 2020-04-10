@@ -73,7 +73,7 @@ const UploadCatImage: React.FC<Props> = ({
     <Modal isOpen={modal} toggle={toggle}>
       <ModalHeader toggle={toggle}>Upload Photo</ModalHeader>
       <ModalBody>
-        <p>A good photo can help foster your cat!</p>
+        <p>A great photo helps to successfully foster your cat!</p>
         <p>
           <Input
             type="file"
@@ -84,7 +84,10 @@ const UploadCatImage: React.FC<Props> = ({
         </p>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={uploadPhoto} disabled={!picture?.name}>
+        <Button
+          color="secondary"
+          onClick={uploadPhoto}
+          disabled={!picture?.name}>
           Upload Photo
         </Button>{" "}
         <Button color="secondary" onClick={toggle}>

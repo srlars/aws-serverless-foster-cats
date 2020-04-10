@@ -64,6 +64,17 @@ export async function getUserCats(jwt: string): Promise<AxiosResponse<Cat[]>> {
 }
 
 /**
+ * Call API to get all fostered cats
+ */
+export async function getAllCats(): Promise<AxiosResponse<Cat[]>> {
+  return await Axios.get(`${apiEndpoint}/cats/fostered`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+/**
  * Call API to get a signed url for updating cat photo
  * @param jwt
  * @param catId

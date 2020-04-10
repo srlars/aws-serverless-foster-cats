@@ -1,40 +1,33 @@
-import { APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
+import {
+  APIGatewayProxyHandler,
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult,
+} from "aws-lambda";
 import { DynamoDB } from "aws-sdk";
 import "source-map-support/register";
-import { getUserIdFromJwt } from "../../auth/utils";
 import { createLogger } from "../../utils/logger";
 
 const logger = createLogger("http");
 const docClient = new DynamoDB.DocumentClient();
 
 const CAT_TABLE = process.env.CAT_TABLE;
-const CAT_OWNER_INDEX_NAME = process.env.CAT_OWNER_INDEX_NAME;
 
 /**
- * Get all cats (that have been fostered) for a user
+ * Get all cats (that have been fostered)
  * @param event
  */
 export const handler: APIGatewayProxyHandler = async (
-  event
+  event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  logger.info("Received request to get all cats for user");
+  logger.info("Getting all cats", event);
 
   try {
-    logger.info("Getting user id from JWT");
-    const ownerId = getUserIdFromJwt(event);
-
-    // Filter for current user and use an INDEX for improved performance
     const params = {
       TableName: CAT_TABLE,
-      IndexName: CAT_OWNER_INDEX_NAME,
-      KeyConditionExpression: "ownerId = :owner",
-      ExpressionAttributeValues: {
-        ":owner": ownerId,
-      },
     };
 
-    logger.info(`Querying cats for user ${ownerId}`);
-    const result = await docClient.query(params).promise();
+    logger.info("Scan all cats");
+    const result = await docClient.scan(params).promise();
 
     return {
       statusCode: 200,
@@ -46,7 +39,7 @@ export const handler: APIGatewayProxyHandler = async (
     };
   } catch (e) {
     // Return FAIL
-    logger.error("Unable to get users' cats", { e });
+    logger.error("Unable to get all cats", { e });
     return {
       statusCode: 500,
       headers: {

@@ -1,4 +1,4 @@
-import { faPaw, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faCat, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
@@ -9,8 +9,9 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
     <Row>
       <Col>
         <Card
-        // onClick={() => history.push("/adopt")}
-        >
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push("/adopt")}
+          className="padding center">
           <CardBody>
             <FontAwesomeIcon icon={faHome} size={"10x"} />
           </CardBody>
@@ -18,20 +19,23 @@ const AdoptOrFoster: React.FC<RouteComponentProps> = ({ history }) => {
             <CardTitle>
               <h1>Adopt</h1>
             </CardTitle>
-            <CardText>Adopt a cat and increase your family</CardText>
+            <CardText>a cat and grow your family</CardText>
           </CardBody>
         </Card>
       </Col>
       <Col>
-        <Card onClick={(): void => history.push("/foster")}>
+        <Card
+          style={{ cursor: "pointer" }}
+          onClick={(): void => history.push("/foster")}
+          className="padding center">
           <CardBody>
-            <FontAwesomeIcon icon={faPaw} size={"10x"} />
+            <FontAwesomeIcon icon={faCat} size={"10x"} />
           </CardBody>
           <CardBody>
             <CardTitle>
               <h1>Foster</h1>
             </CardTitle>
-            <CardText>Foster your cat and spread love</CardText>
+            <CardText>your cat and spread love</CardText>
           </CardBody>
         </Card>
       </Col>

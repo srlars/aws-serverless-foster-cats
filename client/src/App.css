@@ -1,18 +1,31 @@
-
-.lead {
-  font-style: italic;
-}
-
 label {
   padding-bottom: 48px;
   font-weight: bolder;
 }
 
-.loginDetails {
- float: right;
+thead {
+  text-align: center;
 }
 
-.logoutButton  {
+tbody {
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.padding {
+  padding: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+
+.loginDetails {
+  float: right;
+}
+
+.logoutButton {
   margin-left: 12px;
 }
 
@@ -21,5 +34,6 @@ label {
 }
 
 h3 {
-  padding-bottom: 24px;
+  padding: 1rem 0 1rem;
+  text-align: center;
 }

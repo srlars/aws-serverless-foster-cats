@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { useAuth0 } from "../auth/react-auth0-spa";
+import { Button } from "reactstrap";
 
 type Props = {
   user?: { email: string };
@@ -15,12 +16,21 @@ const NavBar: React.FC<Props> = ({ user }) => {
   return isAuthenticated ? (
     <>
       {user && user.email}
-      <button className="logoutButton" onClick={(): void => logout()}>
-        Log out
-      </button>
+      <Button
+        className="logoutButton"
+        onClick={(): void => logout()}
+        outline
+        color="secondary">
+        Log Out
+      </Button>
     </>
   ) : (
-    <button onClick={(): void => loginWithRedirect({})}>Log in</button>
+    <Button
+      onClick={(): void => loginWithRedirect({})}
+      outline
+      color="secondary">
+      Log In
+    </Button>
   );
 };
 
