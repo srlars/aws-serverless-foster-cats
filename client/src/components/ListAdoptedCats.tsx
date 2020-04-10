@@ -64,10 +64,7 @@ const ListFosteredCats: React.FC<Props> = ({
         <td>{cat.gender}</td>
         <td>{cat.age}</td>
         <td>{cat.name}</td>
-        <td>
-          {new Date(cat.createdAt).toLocaleDateString()}{" "}
-          {new Date(cat.createdAt).toLocaleTimeString()}
-        </td>
+        <td>{new Date(cat.createdAt).toLocaleDateString()}</td>
         <td>
           <img src={imageUrl} height={150} alt="" />
         </td>
