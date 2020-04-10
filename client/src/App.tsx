@@ -48,7 +48,7 @@ const App: React.FC = () => {
                 <Col>
                   <h1 className="display-3 center padding">Foster Your Cat</h1>
                   <h3 className="lead center">
-                    and gift a furry friend a new home
+                    and gift your furry friend a new home
                   </h3>
                 </Col>
               </Row>
