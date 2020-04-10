@@ -103,57 +103,49 @@ const FosterCat: React.FC<Props> = ({ jwt, fosteredCats, setFosteredCats }) => {
 
       <Row>
         <Col sm={1}>
-          <Label for="race" class="align-middle">
-            Race
-          </Label>
+          <Label for="race">Race</Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="race"
-            placeholder="Persian"
+            placeholder="e.g. Persian"
             value={catRace}
             onChange={(e): void => setCatRace(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="gender" class="align-middle">
-            Gender
-          </Label>
+          <Label for="gender">Gender</Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="gender"
-            placeholder="Female"
+            placeholder="e.g. Female"
             value={catGender}
             onChange={(e): void => setCatGender(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="age" class="align-middle">
-            Age
-          </Label>
+          <Label for="age">Age</Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="age"
-            placeholder="1 year"
+            placeholder="e.g. 1 year"
             value={catAge}
             onChange={(e): void => setCatAge(e.target.value)}
           />
         </Col>
         <Col sm={1}>
-          <Label for="name" class="align-middle">
-            Name
-          </Label>
+          <Label for="name">Name</Label>
         </Col>
         <Col>
           <Input
             type="text"
             id="name"
-            placeholder="Missy"
+            placeholder="e.g. Missy"
             value={catName}
             onChange={(e): void => setCatName(e.target.value)}
           />

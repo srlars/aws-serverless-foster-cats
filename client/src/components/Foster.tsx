@@ -17,7 +17,7 @@ const Foster: React.FC<Props> = ({ jwt }) => {
 
   return !jwt ? (
     <Row>
-      <Col>Please Login To Foster A Cat</Col>
+      <Col className="text-align: center">Please Login To Foster A Cat</Col>
     </Row>
   ) : (
     <Row>

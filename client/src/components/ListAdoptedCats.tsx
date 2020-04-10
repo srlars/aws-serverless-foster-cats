@@ -7,6 +7,7 @@ import uuid from "uuid";
 import { getAllCats } from "../api/cat-pool-api";
 import { Cat } from "../types/Cat";
 import log from "../utils/Log";
+import "../App.css";
 
 export interface Props {
   fosteredCats: Cat[];
