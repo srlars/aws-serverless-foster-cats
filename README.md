@@ -15,6 +15,7 @@ It is possible for multiple people to create an account and to manage their own 
 The project demonstrates the successful utilization of several key concepts / technologies, namely:
 
 - Amazon Web Services (AWS)
+  - [Amplify](https://aws.amazon.com/amplify/)
   - [API Gateway (API manager)](https://aws.amazon.com/api-gateway/)
   - [CloudFormation (cloud provisioning)](https://aws.amazon.com/cloudformation/)
   - [DynamoDB (NoSQL database)](https://aws.amazon.com/dynamodb/)
