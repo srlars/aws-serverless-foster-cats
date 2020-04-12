@@ -1,8 +1,6 @@
 # Cat Foster App
 
-AWS Amplify URL:
-
-https://master.d2ppwq93khmm84.amplifyapp.com/
+[AWS Amplify Application URL](https://master.d2ppwq93khmm84.amplifyapp.com/)
 
 ## Summary
 
