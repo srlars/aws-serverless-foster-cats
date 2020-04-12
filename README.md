@@ -1,8 +1,6 @@
 # Cat Foster App
 
-AWS Amplify URL:
-
-https://master.d2ppwq93khmm84.amplifyapp.com/
+[AWS Amplify Application URL](https://master.d2ppwq93khmm84.amplifyapp.com/)
 
 ## Summary
 
@@ -121,7 +119,7 @@ amplify publish
 ## Screenshots
 
 **Screenshot of CloudFormation Stack for Serverless deployment**
-![Image of CloudFormation Summary](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/coudformation_stack_serverless.png)
+![Image of CloudFormation Summary](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/cloudformation_stack_serverless.png)
 
 **Screenshot of Serverless deployment**
 ![Image of Serverless Deployment](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/serverless_deployment.png)
