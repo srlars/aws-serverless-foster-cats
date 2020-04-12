@@ -120,13 +120,13 @@ amplify publish
 ## Screenshots
 
 **Screenshot of CloudFormation Stack for Serverless deployment**
-![Image of CloudFormation Summary](https://github.com/srlars/aws-serverless-foster-cats/tree/master/screenshots/coudformation_stack_serverless.png)
+![Image of CloudFormation Summary](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/coudformation_stack_serverless.png)
 
 **Screenshot of Serverless deployment**
-![Image of Serverless Deployment](https://github.com/srlars/aws-serverless-foster-cats/tree/master/screenshots/serverless_deployment.png)
+![Image of Serverless Deployment](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/serverless_deployment.png)
 
 **Screenshot of Serverless dashboard**
-![Image of Serverless Dashboard](https://github.com/srlars/aws-serverless-foster-cats/tree/master/screenshots/serverless_dashboard.png)
+![Image of Serverless Dashboard](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/serverless_dashboard.png)
 
 **Screenshot of Amplify Console (The React App was deployed via AWS Amplify - static build inside S3 bucket)**
-![Image of Client Amplify Deployment](https://github.com/srlars/aws-serverless-foster-cats/tree/master/screenshots/aws_amplify_client.png)
+![Image of Client Amplify Deployment](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/aws_amplify_client.png)
