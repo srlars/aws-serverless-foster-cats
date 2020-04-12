@@ -1,4 +1,5 @@
-app: foster-cat
+org: srlars
+app: my-first-app
 service:
   name: foster-cat-service
 
