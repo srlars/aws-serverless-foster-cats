@@ -129,3 +129,9 @@ amplify publish
 
 **Screenshot of Amplify Console (The React App was deployed via AWS Amplify - static build inside S3 bucket)**
 ![Image of Client Amplify Deployment](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/aws_amplify_client.png)
+
+**Screenshot of Application Homepage**
+![Image of Foster Cat Homepage](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/application_root.png)
+
+**Screenshot of Application Adopt Page**
+![Image of Foster Cat Adopt Page](https://github.com/srlars/aws-serverless-foster-cats/blob/master/screenshots/application_adopt.png)
