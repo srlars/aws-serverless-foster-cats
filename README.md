@@ -1,7 +1,5 @@
 # Cat Foster App
 
-[AWS Amplify Application URL](https://master.d2ppwq93khmm84.amplifyapp.com/)
-
 ## Summary
 
 This application is my capstone project for the [Udacity Cloud Developer Nanodegree](https://www.udacity.com/course/cloud-developer-nanodegree--nd9990).
