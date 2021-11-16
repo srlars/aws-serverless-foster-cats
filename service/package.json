@@ -7,7 +7,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "aws-sdk": "^2.597.0",
+    "aws-sdk": "^2.814.0",
     "jsonwebtoken": "^8.5.1",
     "serverless-aws-documentation": "^1.1.0",
     "serverless-iam-roles-per-function": "^2.0.2",
